@@ -1,0 +1,13 @@
+PART 2:
+A.	Parent class = Spell
+    Child classes = Accio, Confundo
+    
+B.	Accio
+    Summoning CharmAccio
+    No description
+    Confundus CharmConfundo
+    Causes the victim to become confused and befuddled.
+    
+C.	The getdecription() in the Confundo class is being excecuted. 
+
+D.	Change that need to be made:
