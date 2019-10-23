@@ -6,11 +6,28 @@ Created on Wed Oct 23 09:44:25 2019
 @author: cally
 """
 
+import csv
+
+path = "data.csv"
+    
+with open(path) as file:
+    reader = csv.reader(file)
+    header = next(reader)
+    for column in reader:
+         IDs = column[0]
+         names = column[1]
+         posiotions = column[2]
+         
+ID = []
+name = []
+position = []
+salary = []
+         
 class Staff:
     __ID = input("Input ID [SXXXX]: ")
     __name = input("Input Name [0...20]: ")
     __position = input("Input[Position[Stadd|Officer|Manager]: ")
-    __salary = input("Salary for Offcier: ")
+    __salary = input("Salary for ", __position, ": ")
     
     def __init__(self, ID, name, position, salary):
         self.__ID = ID
@@ -18,39 +35,17 @@ class Staff:
         self.__position = position
         self.__salary = salary
         
-    def name(self):
-        return self.__name 
-    
-    def getPosition(self):
-        return self.__position
-    
+    def newStaff(self, newID, newName, newPosition, newSalary):
+       return self.self.__ID 
+       return self.__name 
+       return self.__position 
+       return self.__salary 
         
-    
-    def salary(self):
-        
-        
-class Office:
-    def __init__(self):
-        self.__path = "data.txt"
-        with open(self.__path, 'r') as file:
-            self.__staff = file.readlines().splitlines()
-        
-    def newStaff(self, ID, name,position, salary):
-       userID = self.__ID
-       name = self.__name
-       self.__staff.append(
-       with open(self.__path, 'w') as newdata:
-           for staff in self.__staff:
-               newdata.write(
-        
+   
     def deleteStaff(self, ID):
-        userID = self.__ID
-        if userID in self.__data:
-            self.__staff.remove(ID)
-            with open(self.__data, 'w') as newdata:
-                for staff in self.__staff:
-                    newdata.write(staff + "\n")
-            print("You have successfully removed staff: ", self.__name, " from the database.")
+        if self.__ID in ID:
+            ID.remove(self.__ID)
+            print("You have successfully removed staf from the database.")
         else:
             print("Staff not found in the database.")
             
@@ -85,10 +80,10 @@ class Office:
         print("Minimum Salary: ", minimumM)
         print("Maximum Salary: ",maximumM)
         print("Average Salary: ",averageM)
-                
-def menu():
     
-    office = Office(Staff)
+
+    
+def menu():
     
     print("1. New Staff")
     print("2. Delete Staff")
@@ -99,23 +94,22 @@ def menu():
 
     while True:
         if choice == 1:
-            office.newStaff(Staff)
+            Staff.newStaff(Staff)
             choice = (int(input("Input choice: ")))
             
         elif choice == 2:
-            office.deleteStaff(Staff)
+            Staff.deleteStaff(Staff)
             choice = (int(input("Input choice: ")))
         
         elif choice == 3:
-            office.viewSummary()
+            Staff.viewSummary()
             choice = (int(input("Input choice: ")))
         
         elif choice >= 5:
             print("Invalid choice. Enter 1-4.")
-            adminMenu()
+            menu()
         
         elif choice == 4:
             break
+        
     print("Goodbye!")    
-
-    
