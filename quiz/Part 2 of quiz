@@ -9,5 +9,11 @@ B.	Accio
     Causes the victim to become confused and befuddled.
     
 C.	The getdecription() in the Confundo class is being excecuted. 
+    This is dued to the fact that the getdescription() in Spell() has been overrode by the getdescription() in the Confundo class.
 
-D.	Change that need to be made:
+D.	Altered code:
+    class Accio(Spell):
+        def __init__(self):
+            Spell.__init__(self, ’Accio’, ’Summoning Charm’) 
+        def get_description(self):
+            return 'This charm summons an object to the caster, potentially over a significant distance'
