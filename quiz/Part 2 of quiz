@@ -1,19 +1,23 @@
 PART 2:
-A.	Parent class = Spell
-    Child classes = Accio, Confundo
+A.	
+Parent class = Spell
+Child classes = Accio, Confundo
     
-B.	Accio
-    Summoning CharmAccio
-    No description
-    Confundus CharmConfundo
-    Causes the victim to become confused and befuddled.
+B.	
+Accio
+Summoning CharmAccio
+No description
+Confundus CharmConfundo
+Causes the victim to become confused and befuddled.
     
-C.	The getdecription() in the Confundo class is being excecuted. 
-    This is dued to the fact that the getdescription() in Spell() has been overrode by the getdescription() in the Confundo class.
+C.	
+The getdecription() in the Confundo class is being excecuted. 
+This is dued to the fact that the getdescription() in Spell() has been overrode by the getdescription() in the Confundo class.
 
-D.	Altered code:
-    class Accio(Spell):
-        def __init__(self):
-            Spell.__init__(self, ’Accio’, ’Summoning Charm’) 
-        def get_description(self):
-            return 'This charm summons an object to the caster, potentially over a significant distance'
+D.	
+Altered code:
+class Accio(Spell):
+    def __init__(self):
+        Spell.__init__(self, ’Accio’, ’Summoning Charm’) 
+    def get_description(self):
+        return 'This charm summons an object to the caster, potentially over a significant distance'
