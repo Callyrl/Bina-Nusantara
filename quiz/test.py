@@ -6,84 +6,94 @@ Created on Wed Oct 23 09:44:25 2019
 @author: cally
 """
 
-import csv
+import pandas as pd
 
 path = "data.csv"
     
 with open(path) as file:
-    reader = csv.reader(file)
-    header = next(reader)
-    for column in reader:
-         IDs = column[0]
-         names = column[1]
-         posiotions = column[2]
-         
-ID = []
-name = []
-position = []
-salary = []
-         
+    data = pd.read_csv(file, delimiter = ",", index_col = False)
+    sort = data.sort_values("Name")
+
 class Staff:
-    __ID = input("Input ID [SXXXX]: ")
-    __name = input("Input Name [0...20]: ")
-    __position = input("Input[Position[Stadd|Officer|Manager]: ")
-    __salary = input("Salary for ", __position, ": ")
-    
+
     def __init__(self, ID, name, position, salary):
         self.__ID = ID
         self.__name = name
         self.__position = position
         self.__salary = salary
         
-    def newStaff(self, newID, newName, newPosition, newSalary):
-       return self.self.__ID 
-       return self.__name 
-       return self.__position 
-       return self.__salary 
-        
-   
-    def deleteStaff(self, ID):
-        if self.__ID in ID:
-            ID.remove(self.__ID)
-            print("You have successfully removed staf from the database.")
+    def newStaff(self):
+        self.__userID = input("Input ID [SXXXX]: ")
+        if self.__userID[0] != 'n' and len(self.__userID[1:4]) != 4:
+            self.__userID = input("Input ID[nXXXX]: ")
         else:
-            print("Staff not found in the database.")
+            return self.__userID
+        
+        self.__userName = input("Input Name [0...20]: ")
+        if len(self.__userName) > 0 and len(self.__userName) < 21:
+            return self.__userName
+        else:
+            self.userName = input("Input Name[0...20]: ")
             
-    def viewSummary(self):
-        for 
-            if position == "Staff"
-                minimumS = 
-                maximumS =
-                averageS =
-            
-            elif position == "Officer"
-                minimumO =
-                maximumO = 
-                averageO =
+        print('Position | Salary Range')
+        print('Staff    | 3,500,000 - 7,000,000')
+        print('Officer  | 7,000,001 - 10,000,000')
+        print('Manager  | >10,000,000')
+        
+        self.__userPosition = input("Input Position[Staff|Officer|Manager]: ")        
+        while True:
+            if self.__userPosition == "staff":
+                return self.__userPosition
                 
-            elif position == "Manager"
-                minimumM =
-                maximumM = 
-                averageM =
+                self.__userSalary = int(input("Input Salary: "))
+                if self.__userSalary >= 3500000 and self.__userSalary <= 7000000:
+                    return self.__userSalary
+                else:
+                    self.__userSalary = int(input("Input Salary: "))
+                    
+            elif self.__userPosition == "officer":
+                return self.__userPosition
+                
+                self.__userSalary = int(input("Input Salary: "))
+                if self.__userSalary >= 7000001 and self.__userSalary <= 10000000:
+                    return self.__userSalary
+                else:
+                    self.__userSalary = int(input("Input Salary: "))  
+                    
+            elif self.__userPosition == "manager":
+                return self.__userPosition
+                
+                self.__userSalary = int(input("Input Salary: "))
+                if self.__userSalary >10000000:
+                    return self.__userSalary
+                else:
+                    self.__userSalary = int(input("Input Salary: "))
+            
+            else:
+                input("Input Position[Staff|Officer|Manager]: ") 
         
-        print("1. Salary")
-        print("Minimum Salary: ", minimumS)
-        print("Maximum Salary: ", maximumS)
-        print("Average Salary: ", averageS)
+        with open(path) as file:
+            data = pd.read_csv(file, delimiter = ",", index_col = False)
+            sort = data.sort_values("Name")
+            
+        dataT = data.T
+        dataT[self.__userID, self.__userName, self.__userPosition, self.__userSalary]
+        data = dataT.T
         
-        print("2. Officer")
-        print("Minimum Salary: ", minimumO)
-        print("Maximum Salary: ", maximumO)
-        print("Average Salary: ", averageO)
+        print(sort)
+        print("You have successfully added a new staff")
         
-        print("3. Manager")
-        print("Minimum Salary: ", minimumM)
-        print("Maximum Salary: ",maximumM)
-        print("Average Salary: ",averageM)
-    
-
-    
+    def deleteSatff(self):
+         if self.__ID in data:
+             data.drop(self.__ID , axis = 0, inplace = True)
+             print(sort)
+             print("You have successfully removed staf from the database.")
+         else:
+             print("Staff not found in the database.")
+         
+        
 def menu():
+    s = Staff(self, ID, name, position, salary)
     
     print("1. New Staff")
     print("2. Delete Staff")
@@ -91,25 +101,27 @@ def menu():
     print("4. Save and Exit")
     
     choice = (int(input("Input choice: ")))
-
+        
     while True:
         if choice == 1:
-            Staff.newStaff(Staff)
+            s.newStaff()
             choice = (int(input("Input choice: ")))
             
         elif choice == 2:
-            Staff.deleteStaff(Staff)
+            s.deleteStaff()
             choice = (int(input("Input choice: ")))
-        
+            
         elif choice == 3:
-            Staff.viewSummary()
+            s.viewSummary()
             choice = (int(input("Input choice: ")))
+    
+        elif choice == 4:
+            data.to_csv("data.csv", index = False)
+            break
         
         elif choice >= 5:
             print("Invalid choice. Enter 1-4.")
             menu()
         
-        elif choice == 4:
-            break
+        print("Goodbye!")  
         
-    print("Goodbye!")    
