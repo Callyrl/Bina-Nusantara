@@ -1,0 +1,14 @@
+  
+package com.company;
+
+import java.util.Arrays;
+
+class ArrayExercise {
+    public static void main(String[] args) 
+    {
+        int x[] = {2, 4, 7, 1, 0, 9, 6};
+        Arrays.sort(x);
+        
+        System.out.println(Arrays.toString(x);
+    }
+}
