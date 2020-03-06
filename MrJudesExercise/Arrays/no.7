@@ -1,0 +1,32 @@
+package com.company;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class ArrayExercise {
+    public static void main(String[] args) {
+        
+        String num;
+        String[] x1 = new String[5];
+        String[] x2 = new String[5];
+        String x[] = new String[10];
+        
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < 10; i++) 
+        {
+            System.out.print("Enter numbers in the array: ");
+            num = sc.next();
+            x[i] = num;
+        }
+        
+        for (int i = 0, j = 5; i < 5 & j < 10; i++, j++)
+        {
+            x1[i] = x[i];
+            x2[i] = x[j];
+        }
+        
+        System.out.println("list 1: " + Arrays.toString(x1));
+        System.out.println("list 2: " + Arrays.toString(x2));
+    }
+}
