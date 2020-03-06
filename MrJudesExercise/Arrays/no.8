@@ -1,0 +1,33 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class ArrayExercise {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n, num;
+
+        System.out.print("Enter the length of the array: ");
+        n = sc.nextInt();
+        int x[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter number in array: ");
+            num = sc.nextInt();
+            x[i] = num;
+        }
+
+        int[] a = new int[(n + 1)/2];
+        int[] b = new int[n - a.length];
+
+        for (int i = 0; i < n; i++)
+        {
+            if (i < a.length)
+                a[i] = x[i];
+            else
+                b[i - a.length] = x[i];
+        }
+
+        System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(b));
+    }
+}
