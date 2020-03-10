@@ -9,6 +9,6 @@ class ArrayExercise {
         int x[] = {2, 4, 7, 1, 0, 9, 6};
         Arrays.sort(x);
         
-        System.out.println(Arrays.toString(x);
+        System.out.println(Arrays.toString(x));
     }
 }
