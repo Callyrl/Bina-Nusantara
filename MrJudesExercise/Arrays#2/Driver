@@ -1,0 +1,47 @@
+package com.company;
+import java.util.Scanner;
+
+public class Driver {
+    public static void menu()
+    {
+        System.out.println("What would you like to do: ");
+        System.out.println("1. Splitting the Highest Element.");
+        System.out.println("2. Shift the array.");
+        System.out.println("3. Check whether multidimensional Array is symmetrical.");
+        System.out.println("4. Magic Square");
+    }
+
+    public static void main(String[] args) {
+
+        Driver.menu();
+
+        Scanner sc = new Scanner(System.in);
+        int options = sc.nextInt();
+
+        switch (options) {
+            case 1:
+                Utility.Additive();
+                break;
+
+            case 2:
+                Utility.Shift();
+                break;
+
+            case 3:
+                Utility.Symmetry();
+                break;
+
+            case 4:
+                System.out.print("Enter the size of the array: ");
+                int sizee = sc.nextInt();
+
+                int [][]mat = Utility.createMS(sizee);
+                Utility.displayMS(mat,sizee);
+                break;
+
+            default:
+                Driver.menu();
+                System.out.println("Choose only options 1-4");
+        }
+    }
+}
