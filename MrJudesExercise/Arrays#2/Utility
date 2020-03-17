@@ -1,0 +1,217 @@
+package com.company;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Utility {
+
+    public static void Additive()
+    {
+        Scanner sc = new Scanner(System.in);
+        int[] num1 = new int[5], num2 = new int[num1.length + 1];
+        int max, next = 0, additive;
+
+        // Prompting user input
+        for (int i = 0; i < num1.length; i++)
+        {
+            System.out.println("Enter number in array: ");
+            num1[i] = sc.nextInt();
+        }
+
+        max = num1[0];
+
+        for (int value : num1)
+        {
+            if (value > max)
+            {
+                max = value;
+            }
+        }
+
+        for (int value : num1)
+        {
+            if (value > next && value < max)
+            {
+                next = value;
+            }
+        }
+
+        additive = max - next;
+
+        // Finding the position of the index
+        int maxIndex = 0;
+
+        for (int i = 0; i < num1.length; i++) {
+            if (num1[i] == max) {
+                maxIndex = i;
+            }
+        }
+
+        for (int i = 0; i < maxIndex + 2; i++)
+        {
+            if (i != maxIndex)
+            {
+                num2[i] = num1[i];
+            }
+
+            else
+            {
+                num2[i] = next;
+                num2[i + 1] = additive;
+                break;
+            }
+        }
+
+        for (int i = maxIndex + 2; i < num2.length; i++)
+        {
+            num2[i] = num1[i - 1];
+        }
+
+        System.out.println(Arrays.toString(num1));
+        System.out.println(Arrays.toString(num2));
+    }
+
+    public static void Shift()
+    {
+        Scanner sc = new Scanner(System.in);
+        int n, num, shift;
+
+        System.out.print("Enter the length of the array: ");
+        n = sc.nextInt();
+
+        int[] x = new int[n];
+
+        for (int k = 0; k < n; k++)
+        {
+            System.out.print("Enter numbers in array: ");
+            num = sc.nextInt();
+            x[k] = num;
+        }
+
+        int[] xS = new int[n];
+
+        System.out.println("ROT: ");
+        shift = sc.nextInt();
+
+        // Looping and adding the index number by the shift
+        for (int k = 0; k < n; k++)
+        {
+            int s = (k + shift) % n;
+            xS[s] = x[k];
+        }
+
+        System.out.println(Arrays.toString(x));
+        System.out.println(Arrays.toString(xS));
+    }
+
+
+    public static void Symmetry()
+    {
+        int[][] arr = new int[3][3];
+
+        int l, m;
+        int flag = 1;
+        Scanner scan = new Scanner(System.in);
+
+        // Prompting user input
+        System.out.println("Enter numbers in array: ");
+
+        for (l = 0; l < 3; l++)
+        {
+            for (m = 0; m < 3; m++)
+            {
+                arr[l][m] = scan.nextInt();
+            }
+        }
+
+        // looping and checking whether it is symmetrical or not
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (arr[i][j] != arr[j][i])
+                {
+                    flag = 0;
+                    break;
+                }
+            }
+        }
+
+        // Checking whether it is symmetrical using the flag
+        if (flag == 1)
+        {
+            System.out.println("Matrix is symmetrical");
+        }
+
+        else
+        {
+            System.out.println("Matrix is NOT symmetrical");
+        }
+    }
+
+    public static int[][] createMS(int sizee)
+    {
+        Scanner sc = new Scanner(System.in);
+        int[][] matrix = new int[sizee][sizee];
+
+
+        if (sizee % 2 != 0)
+        {
+            // Position for first element is initialized
+            int i = sizee / 2, j = sizee - 1;
+
+            for (int k = 1; k <= sizee * sizee; )
+            {
+                // In case position goes beyond the matrix range
+                if (i == -1 && j == sizee)
+                {
+                    j = sizee - 2;
+                    i = 0;
+                }
+
+                else
+                {
+                    // Iterates through the matrix and prevents it from going beyond the matrix size
+                    if (j == sizee)
+                    {
+                        j = 0;
+                    }
+
+                    // Prevents iteration from going beyond the range
+                    if (i < 0)
+                    {
+                        i = sizee - 1;
+                    }
+                }
+
+                // if space is filled, the number will be placed in the next position
+                if (matrix[i][j] != 0)
+                {
+                    j -= 2;
+                    i++;
+                    continue;
+                }
+
+                else
+                {
+                    matrix[i][j] = k++;
+                    i--;
+                    j++;
+                }
+            }
+        }
+        return matrix;
+    }
+
+    public static void displayMS(int[][] matrix, int n)
+    {
+        for (int i =0; i<n; i++)
+        {
+            for(int j=0; j<n; j++)
+            {
+                System.out.print(matrix[i][j]+" ");
+            }
+
+            System.out.println("The magic constant is: " + n*(n*n+1)/2);
+        }
+    }
+}
